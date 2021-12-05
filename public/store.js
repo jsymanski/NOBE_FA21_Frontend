@@ -26,13 +26,23 @@ function ready() {
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
-function purchaseClicked() {
-    alert('Thank you for your purchase')
-    var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
+var StripeHandler = stripeCheckout.configure({
+    key: stripePublicKey,
+    locale: 'auto',
+    token: function(token){
+
     }
-    updateCartTotal()
+})
+
+function purchaseClicked() {
+    //alert('Thank you for your purchase')
+    //var cartItems = document.getElementsByClassName('cart-items')[0]
+    //while (cartItems.hasChildNodes()) {
+    //    cartItems.removeChild(cartItems.firstChild)
+    //}
+    //updateCartTotal()
+
+    StripeHandler.open()
 }
 
 function removeCartItem(event) {
@@ -55,13 +65,15 @@ function addToCartClicked(event) {
     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
     var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
     var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
+    var id = shopItem.dataset.itemId
     addItemToCart(title, price, imageSrc)
     updateCartTotal()
 }
 
-function addItemToCart(title, price, imageSrc) {
+function addItemToCart(title, price, imageSrc, id) {
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
+    cartRow.dataset.itemId = id
     var cartItems = document.getElementsByClassName('cart-items')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     for (var i = 0; i < cartItemNames.length; i++) {

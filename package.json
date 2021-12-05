@@ -1,0 +1,29 @@
+{
+  "name": "nobe_fa21_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AjitSingh12345/NOBE_FA21_Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AjitSingh12345/NOBE_FA21_Frontend/issues"
+  },
+  "homepage": "https://github.com/AjitSingh12345/NOBE_FA21_Frontend#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "save": "^2.4.0",
+    "strip": "^3.0.0",
+    "stripe": "^8.179.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
